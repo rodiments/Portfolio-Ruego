@@ -5,8 +5,8 @@
   --color-foreground: #f0f0f0;
   --color-surface: #0f1117;
   --color-border: #1a1f2e;
-  --color-accent: #10b981;
-  --color-accent-bright: #6ee7b7;
+  --color-accent: #0ea5e9;
+  --color-accent-bright: #7dd3fc;
   --color-secondary: #f59e0b;
 }
 
@@ -19,7 +19,9 @@
 }
 
 body {
-  background-color: #05050a;
+  background: radial-gradient(circle at top left, #072e3d 0%, #050d12 45%, #05050a 100%),
+              radial-gradient(circle at bottom right, #0a3d52 0%, #050a0c 45%, #05050a 100%);
+  background-attachment: fixed;
   color: #f0f0f0;
   margin: 0;
   line-height: 1.6;
@@ -31,6 +33,7 @@ body {
 h1, h2, h3, h4 {
   letter-spacing: -0.02em;
   font-weight: 700;
+  color: #ffffff;
 }
 
 /* Custom Scrollbar */
@@ -45,5 +48,5 @@ h1, h2, h3, h4 {
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #10b981;
+  background: #0ea5e9;
 }

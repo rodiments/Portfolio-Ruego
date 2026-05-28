@@ -47,7 +47,7 @@ const BentoGrid = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: index * 0.1 }}
-          className={`${project.className} group relative overflow-hidden rounded-[2.5rem] bg-zinc-900 border border-zinc-800 shadow-xl`}
+          className={`${project.className} group relative overflow-hidden rounded-[2.5rem] bg-zinc-950/40 border border-zinc-800 shadow-xl`}
         >
           {/* Image Layer */}
           <div className="absolute inset-0 z-0">
@@ -63,7 +63,7 @@ const BentoGrid = () => {
           {/* Content Layer */}
           <div className="relative z-10 flex h-full flex-col justify-end p-10">
             <div className="transform transition-transform duration-500 group-hover:-translate-y-2">
-              <span className="mb-4 inline-block text-xs font-black uppercase tracking-[0.4em] text-emerald-500 group-hover:text-emerald-400 transition-colors">
+              <span className="mb-4 inline-block text-xs font-black uppercase tracking-[0.4em] text-sky-500 group-hover:text-sky-400 transition-colors">
                 {project.category}
               </span>
               <h3 className="mb-4 text-3xl font-bold tracking-tight text-white md:text-4xl leading-tight">
@@ -72,22 +72,22 @@ const BentoGrid = () => {
               <p className="mb-8 max-w-sm text-lg font-light leading-relaxed text-zinc-300 opacity-0 transition-all duration-500 group-hover:opacity-100">
                 {project.description}
               </p>
-              
+
               <div className="flex flex-wrap gap-3">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-xl bg-emerald-500/10 px-5 py-2 text-xs font-bold uppercase tracking-widest text-emerald-400 backdrop-blur-md border border-emerald-500/20"
+                    className="rounded-xl bg-sky-500/10 px-5 py-2 text-xs font-bold uppercase tracking-widest text-sky-400 backdrop-blur-md border border-sky-500/20"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
-            </div>
-          </div>
+              </div>
+              </div>
 
-          {/* Hover Border Glow */}
-          <div className="absolute inset-0 border-2 border-emerald-500/0 transition-all duration-500 group-hover:border-emerald-500/30 rounded-[2.5rem]" />
+              {/* Hover Border Glow */}
+              <div className="absolute inset-0 border-2 border-sky-500/0 transition-all duration-500 group-hover:border-sky-500/30 rounded-[2.5rem]" />
         </motion.div>
       ))}
     </div>
@@ -95,3 +95,12 @@ const BentoGrid = () => {
 };
 
 export default BentoGrid;
+
+
+
+
+
+
+
+
+

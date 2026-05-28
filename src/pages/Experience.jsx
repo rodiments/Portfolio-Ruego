@@ -83,7 +83,7 @@ const Experience = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="mb-6 inline-block border-l-4 border-emerald-600 px-6 py-2 text-sm font-bold uppercase tracking-[0.3em] text-emerald-500"
+          className="mb-6 inline-block border-l-4 border-sky-600 px-6 py-2 text-sm font-bold uppercase tracking-[0.3em] text-sky-500"
         >
           Career Timeline
         </motion.div>
@@ -93,7 +93,7 @@ const Experience = () => {
           transition={{ delay: 0.2, duration: 0.6 }}
           className="text-6xl font-bold tracking-tight text-white sm:text-7xl"
         >
-          Professional <span className="text-emerald-500">Journey.</span>
+          Professional <span className="text-sky-500">Journey.</span>
         </motion.h1>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
@@ -111,11 +111,11 @@ const Experience = () => {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="mb-16 text-center text-2xl font-black uppercase tracking-[0.4em] text-zinc-700"
+            className="mb-16 text-center text-2xl font-black uppercase tracking-[0.4em] text-zinc-500"
           >
             {year}
           </motion.h2>
-          <div className="relative space-y-16 before:absolute before:inset-0 before:ml-5 before:h-full before:w-px before:bg-zinc-800 md:before:mx-auto md:before:translate-x-0">
+          <div className="relative space-y-16 before:absolute before:inset-0 before:ml-5 before:h-full before:w-px before:bg-slate-200 md:before:mx-auto md:before:translate-x-0">
             {exps.map((exp, index) => (
               <motion.div
                 key={index}
@@ -131,15 +131,15 @@ const Experience = () => {
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.3, type: "spring", stiffness: 260, damping: 20 }}
-                  className="absolute left-0 flex h-12 w-12 items-center justify-center rounded-full border border-zinc-800 bg-zinc-950 shadow-xl md:left-1/2 md:-ml-6 z-10"
+                  className="absolute left-0 flex h-12 w-12 items-center justify-center rounded-full border border-zinc-800 bg-zinc-950/40 shadow-xl md:left-1/2 md:-ml-6 z-10"
                 >
-                  <div className={`h-3 w-3 rounded-full ${exp.type === 'work' ? 'bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.6)]' : 'bg-zinc-700'}`} />
+                  <div className={`h-3 w-3 rounded-full ${exp.type === 'work' ? 'bg-sky-500 shadow-[0_0_15px_rgba(14,165,233,0.6)]' : 'bg-slate-300'}`} />
                 </motion.div>
 
                 {/* Content */}
                 <div className="ml-20 w-full md:ml-0 md:w-[45%]">
-                  <GlassCard className="group hover:border-emerald-500/40 transition-all p-10">
-                    <span className="text-xs font-bold uppercase tracking-widest text-emerald-500 group-hover:text-emerald-400 transition-colors">
+                  <GlassCard className="group hover:border-sky-500/40 transition-all p-10">
+                    <span className="text-xs font-bold uppercase tracking-widest text-sky-500 group-hover:text-sky-400 transition-colors">
                       {exp.period}
                     </span>
                     <h3 className="mt-3 text-2xl font-bold tracking-tight text-white transition-colors">{exp.title}</h3>
@@ -157,3 +157,12 @@ const Experience = () => {
 };
 
 export default Experience;
+
+
+
+
+
+
+
+
+

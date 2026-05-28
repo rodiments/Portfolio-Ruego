@@ -14,9 +14,9 @@ export default {
         },
         border: "#1a1f2e", // Subtle Dark Gray
         accent: {
-          DEFAULT: "#10b981", // Soothing Emerald Green
-          bright: "#6ee7b7", // Light Emerald for highlights
-          glow: "rgba(16, 185, 129, 0.3)",
+          DEFAULT: "#0ea5e9", // Sky Blue
+          bright: "#7dd3fc", // Light Sky Blue for highlights
+          glow: "rgba(14, 165, 233, 0.3)",
         },
         secondary: {
           DEFAULT: "#f59e0b", // Warm Amber accent

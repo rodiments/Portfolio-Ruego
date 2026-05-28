@@ -182,7 +182,8 @@ const Projects = () => {
     if (saved) setSavedProjects(JSON.parse(saved));
   }, []);
 
-  const toggleSave = (title) => {
+  const toggleSave = (e, title) => {
+    e.stopPropagation();
     setSavedProjects(prev => {
       const next = prev.includes(title) ? prev.filter(t => t !== title) : [...prev, title];
       localStorage.setItem('savedProjects', JSON.stringify(next));
@@ -202,7 +203,7 @@ const Projects = () => {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-6 inline-block border-l-4 border-emerald-600 px-6 py-2 text-sm font-bold uppercase tracking-[0.3em] text-emerald-500"
+          className="mb-6 inline-block border-l-4 border-sky-600 px-6 py-2 text-sm font-bold uppercase tracking-[0.3em] text-sky-500"
         >
           Project Showcase
         </motion.div>
@@ -212,7 +213,7 @@ const Projects = () => {
           transition={{ delay: 0.1 }}
           className="text-5xl md:text-6xl font-bold tracking-tight text-white mb-6"
         >
-          Design & Development <span className="text-emerald-500">Journey</span>
+          Design & Development <span className="text-sky-500">Journey</span>
         </motion.h1>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
@@ -226,14 +227,14 @@ const Projects = () => {
 
       {/* Floating Quick Nav */}
       <nav className="sticky top-24 z-40 mb-20 flex justify-center">
-        <div className="flex items-center gap-2 rounded-2xl border border-zinc-800 bg-zinc-950/90 p-2 backdrop-blur-xl shadow-2xl">
+        <div className="flex items-center gap-2 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-2 backdrop-blur-xl shadow-2xl">
           {academicContent.map((section) => (
             <button
               key={section.id}
               onClick={() => scrollToSection(section.id)}
               className={`px-8 py-3 text-xs font-bold uppercase tracking-widest transition-all rounded-xl ${
                 activeYear === section.id 
-                ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20' 
+                ? 'bg-sky-600 text-white shadow-lg shadow-sky-500/20' 
                 : 'text-zinc-500 hover:text-zinc-300'
               }`}
             >
@@ -252,11 +253,11 @@ const Projects = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="mb-16 flex flex-col border-b border-zinc-900 pb-10"
+            className="mb-16 flex flex-col border-b border-zinc-800 pb-10"
           >
             <div className="flex items-end justify-between">
               <div>
-                <span className="text-xs font-black uppercase tracking-[0.4em] text-emerald-500">{section.year}</span>
+                <span className="text-xs font-black uppercase tracking-[0.4em] text-sky-500">{section.year}</span>
                 <h2 className="mt-4 text-4xl font-bold text-white">{section.isFeatured ? 'Primary Milestone' : 'Academic Explorations'}</h2>
               </div>
             </div>
@@ -280,7 +281,8 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="group relative overflow-hidden rounded-[3rem] bg-zinc-900/50 border border-zinc-800 shadow-2xl"
+              className="group relative overflow-hidden rounded-[3rem] bg-zinc-950/40/50 border border-zinc-800 shadow-2xl cursor-pointer hover:border-sky-600/40 transition-colors"
+              onClick={() => setSelectedProject({ ...section, section: section })}
             >
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="relative aspect-square lg:aspect-auto overflow-hidden">
@@ -294,7 +296,7 @@ const Projects = () => {
                     transition={{ delay: 0.3 }}
                     className="mb-8 flex gap-4"
                   >
-                    <span className="flex items-center gap-2 rounded-full bg-emerald-600/10 px-5 py-2 text-xs font-black uppercase tracking-widest text-emerald-400 border border-emerald-500/20">
+                    <span className="flex items-center gap-2 rounded-full bg-sky-600/10 px-5 py-2 text-xs font-black uppercase tracking-widest text-sky-400 border border-sky-500/20">
                       <Cpu size={14} /> Systems Engineering
                     </span>
                   </motion.div>
@@ -331,18 +333,29 @@ const Projects = () => {
                     </div>
                   </motion.div>
 
-                  <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.7 }}
-                    className="flex flex-wrap gap-3"
-                  >
-                    {section.tags.map(tag => (
-                      <span key={tag} className="px-5 py-2 rounded-xl bg-emerald-600/10 text-emerald-400 text-xs font-bold border border-emerald-500/20 uppercase tracking-widest">
-                        {tag}
-                      </span>
-                    ))}
-                  </motion.div>
+                  <div className="flex flex-col sm:flex-row items-center gap-6">
+                    <motion.div 
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.7 }}
+                      className="flex flex-wrap gap-3"
+                    >
+                      {section.tags.map(tag => (
+                        <span key={tag} className="px-5 py-2 rounded-xl bg-sky-600/10 text-sky-400 text-xs font-bold border border-sky-500/20 uppercase tracking-widest">
+                          {tag}
+                        </span>
+                      ))}
+                    </motion.div>
+                    
+                    <motion.button
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.8 }}
+                      className="group/btn flex items-center gap-3 rounded-2xl bg-sky-600 px-8 py-4 text-sm font-bold uppercase tracking-widest text-white shadow-lg shadow-sky-500/20 transition-all hover:bg-sky-500 hover:shadow-sky-500/40"
+                    >
+                      View Details <ArrowRight size={18} className="transition-transform group-hover/btn:translate-x-1" />
+                    </motion.button>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -369,7 +382,7 @@ const Projects = () => {
                     show: { opacity: 1, y: 0, scale: 1 }
                   }}
                   transition={{ duration: 0.6 }}
-                  className="group relative flex flex-col rounded-[2.5rem] bg-zinc-900/40 border border-zinc-800 overflow-hidden transition-all hover:border-emerald-600/40 shadow-xl cursor-pointer hover:shadow-[0_20px_60px_rgba(16,185,129,0.1)]"
+                  className="group relative flex flex-col rounded-[2.5rem] bg-zinc-950/40 border border-zinc-800 overflow-hidden transition-all hover:border-sky-600/40 shadow-xl cursor-pointer hover:shadow-[0_20px_60px_rgba(14,165,233,0.05)]"
                   onClick={() => setSelectedProject({ ...project, section: section })}
                 >
                   <div className="p-6">
@@ -384,30 +397,28 @@ const Projects = () => {
                   
                   <div className="p-10 pt-4">
                     <div className="mb-6 flex items-center justify-between">
-                      <span className="text-xs font-black uppercase tracking-widest text-emerald-500">{project.role}</span>
+                      <span className="text-xs font-black uppercase tracking-widest text-sky-500">{project.role}</span>
                       <button 
-                        onClick={() => toggleSave(project.title)}
-                        className={`p-3 rounded-xl transition-colors ${savedProjects.includes(project.title) ? 'text-emerald-500 bg-emerald-500/10' : 'text-zinc-600 hover:text-white hover:bg-zinc-800'}`}
+                        onClick={(e) => toggleSave(e, project.title)}
+                        className={`p-3 rounded-xl transition-colors ${savedProjects.includes(project.title) ? 'text-sky-500 bg-sky-500/10' : 'text-zinc-600 hover:text-white hover:bg-slate-200'}`}
                       >
                         <Star size={18} fill={savedProjects.includes(project.title) ? "currentColor" : "none"} />
                       </button>
                     </div>
                     <h3 className="text-2xl font-bold text-white mb-4 leading-tight">{project.title}</h3>
                     <p className="text-lg text-zinc-400 font-light leading-relaxed mb-8">{project.description}</p>
-                    <div className="flex flex-wrap gap-3 mb-6">
+                    <div className="flex flex-wrap gap-3 mb-10">
                       {project.tags.map(tag => (
-                        <span key={tag} className="px-4 py-2 rounded-xl bg-zinc-950 text-zinc-400 text-[10px] font-black uppercase tracking-widest border border-zinc-800 group-hover:border-emerald-600/20 transition-colors">
+                        <span key={tag} className="px-4 py-2 rounded-xl bg-zinc-950/40 text-zinc-400 text-[10px] font-black uppercase tracking-widest border border-zinc-800 group-hover:border-sky-600/20 transition-colors">
                           {tag}
                         </span>
                       ))}
                     </div>
-                    <motion.div 
-                      initial={{ opacity: 0, x: -10 }}
-                      whileHover={{ opacity: 1, x: 0 }}
-                      className="inline-flex items-center gap-2 text-emerald-500 font-semibold text-sm group-hover:translate-x-1 transition-transform"
+                    <div 
+                      className="mt-auto flex items-center justify-center gap-3 rounded-2xl bg-sky-600/10 py-5 text-sm font-bold uppercase tracking-widest text-sky-500 border border-sky-500/20 transition-all group-hover:bg-sky-600 group-hover:text-white group-hover:shadow-lg group-hover:shadow-sky-500/20"
                     >
-                      View Project <ArrowRight size={16} />
-                    </motion.div>
+                      View Details <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -424,26 +435,26 @@ const Projects = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedProject(null)}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-zinc-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-zinc-900 rounded-[2.5rem] border border-zinc-800 max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-[0_20px_100px_rgba(0,0,0,0.8)]"
+              className="bg-zinc-950/40 rounded-[2.5rem] border border-zinc-800 max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-[0_20px_100px_rgba(0,0,0,0.8)]"
             >
               {/* Modal Header with Close */}
-              <div className="sticky top-0 z-10 flex items-center justify-between p-8 border-b border-zinc-800 bg-zinc-900/95 backdrop-blur">
+              <div className="sticky top-0 z-10 flex items-center justify-between p-8 border-b border-zinc-800 bg-zinc-950/40/95 backdrop-blur">
                 <div>
-                  <p className="text-xs font-black uppercase tracking-[0.3em] text-emerald-500 mb-2">
+                  <p className="text-xs font-black uppercase tracking-[0.3em] text-sky-500 mb-2">
                     {selectedProject.section?.year || 'Project'}
                   </p>
                   <h2 className="text-3xl font-bold text-white">{selectedProject.title}</h2>
                 </div>
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="p-3 rounded-xl bg-zinc-800/50 hover:bg-zinc-700 transition-colors"
+                  className="p-3 rounded-xl bg-slate-100 hover:bg-slate-200 transition-colors"
                 >
                   <X size={24} className="text-white" />
                 </button>
@@ -461,7 +472,7 @@ const Projects = () => {
                     <img
                       src={selectedProject.image}
                       alt={selectedProject.title}
-                      className="w-full rounded-[1.5rem] object-cover border border-zinc-800"
+                      className="w-full rounded-[1.5rem] object-cover border border-zinc-800 shadow-md"
                     />
                   )}
                 </div>
@@ -469,16 +480,16 @@ const Projects = () => {
                 {/* Project Details */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                   <div>
-                    <p className="text-xs font-black uppercase tracking-[0.3em] text-zinc-600 mb-2">Role</p>
+                    <p className="text-xs font-black uppercase tracking-[0.3em] text-zinc-500 mb-2">Role</p>
                     <p className="text-lg font-semibold text-white">{selectedProject.role || 'Designer'}</p>
                   </div>
                   <div>
-                    <p className="text-xs font-black uppercase tracking-[0.3em] text-zinc-600 mb-2">Duration</p>
+                    <p className="text-xs font-black uppercase tracking-[0.3em] text-zinc-500 mb-2">Duration</p>
                     <p className="text-lg font-semibold text-white">{selectedProject.section?.year || 'Ongoing'}</p>
                   </div>
                   <div>
-                    <p className="text-xs font-black uppercase tracking-[0.3em] text-zinc-600 mb-2">Status</p>
-                    <p className="text-lg font-semibold text-emerald-400">{selectedProject.outcome || 'Completed'}</p>
+                    <p className="text-xs font-black uppercase tracking-[0.3em] text-zinc-500 mb-2">Status</p>
+                    <p className="text-lg font-semibold text-sky-600">{selectedProject.outcome || 'Completed'}</p>
                   </div>
                 </div>
 
@@ -489,7 +500,7 @@ const Projects = () => {
                     {selectedProject.description}
                   </p>
                   {selectedProject.summary && (
-                    <p className="text-base text-zinc-500 font-light italic leading-relaxed border-l-4 border-emerald-500/30 pl-4">
+                    <p className="text-base text-zinc-500 font-light italic leading-relaxed border-l-4 border-sky-500/30 pl-4">
                       {selectedProject.summary}
                     </p>
                   )}
@@ -498,7 +509,7 @@ const Projects = () => {
                 {/* Technologies/Tags */}
                 <div className="mb-12">
                   <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                    <Tag size={20} className="text-emerald-500" />
+                    <Tag size={20} className="text-sky-500" />
                     Technologies & Skills
                   </h3>
                   <div className="flex flex-wrap gap-3">
@@ -507,7 +518,7 @@ const Projects = () => {
                         key={tag}
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="px-5 py-3 rounded-xl bg-emerald-600/10 text-emerald-400 border border-emerald-500/30 font-semibold text-sm uppercase tracking-wide hover:bg-emerald-600/20 transition-colors"
+                        className="px-5 py-3 rounded-xl bg-sky-600/10 text-sky-400 border border-sky-500/30 font-semibold text-sm uppercase tracking-wide hover:bg-sky-600/20 transition-colors"
                       >
                         {tag}
                       </motion.span>
@@ -524,7 +535,7 @@ const Projects = () => {
                 >
                   <button
                     onClick={() => setSelectedProject(null)}
-                    className="flex-1 rounded-xl bg-emerald-600 text-white font-bold py-4 px-6 transition-all hover:bg-emerald-500 hover:shadow-[0_0_30px_rgba(16,185,129,0.3)] uppercase tracking-wide"
+                    className="flex-1 rounded-xl bg-sky-600 text-white font-bold py-4 px-6 transition-all hover:bg-sky-500 hover:shadow-[0_0_30px_rgba(14,165,233,0.3)] uppercase tracking-wide"
                   >
                     Close
                   </button>
@@ -539,3 +550,12 @@ const Projects = () => {
 };
 
 export default Projects;
+
+
+
+
+
+
+
+
+
