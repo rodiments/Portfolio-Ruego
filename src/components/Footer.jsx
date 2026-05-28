@@ -1,8 +1,8 @@
 const Footer = () => {
   return (
-    <footer className="mt-48 border-t border-zinc-800 bg-transparent py-24">
+    <footer className="mt-24 border-t border-zinc-900 bg-transparent py-12 sm:mt-48 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12 sm:gap-16 sm:mb-16">
           {/* Brand Section */}
           <div>
             <h3 className="text-2xl font-bold tracking-tight text-white">Rodelyn<span className="text-sky-500">.</span></h3>

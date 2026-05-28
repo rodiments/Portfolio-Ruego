@@ -11,40 +11,40 @@ const Contact = () => {
         </p>
       </div>
 
-      <GlassCard className="p-6 sm:p-10 md:p-16 rounded-[2.5rem] sm:rounded-[3rem]">
+      <GlassCard className="p-6 sm:p-10 md:p-16 rounded-[2rem] sm:rounded-[3rem]">
         <form className="space-y-6 sm:space-y-8 md:space-y-10">
           <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 md:gap-10">
             <div>
-              <label className="block text-xs font-black text-zinc-500 mb-2 uppercase tracking-[0.2em] sm:mb-3">Full Name</label>
-              <input type="text" className="w-full rounded-xl sm:rounded-2xl bg-zinc-950/40 border border-zinc-800 p-3 sm:p-4 md:p-5 outline-none focus:border-sky-500 transition-all text-base sm:text-lg text-white" placeholder="John Doe" />
+              <label className="block text-[10px] font-black text-zinc-500 mb-2 uppercase tracking-[0.2em] sm:mb-3 sm:text-xs">Full Name</label>
+              <input type="text" className="w-full rounded-xl sm:rounded-2xl bg-zinc-950/40 border border-zinc-800 p-3 sm:p-4 md:p-5 outline-none focus:border-sky-500 transition-all text-sm sm:text-lg text-white" placeholder="John Doe" />
             </div>
             <div>
-              <label className="block text-xs font-black text-zinc-500 mb-2 uppercase tracking-[0.2em] sm:mb-3">Email Address</label>
-              <input type="email" className="w-full rounded-xl sm:rounded-2xl bg-zinc-950/40 border border-zinc-800 p-3 sm:p-4 md:p-5 outline-none focus:border-sky-500 transition-all text-base sm:text-lg text-white" placeholder="john@example.com" />
+              <label className="block text-[10px] font-black text-zinc-500 mb-2 uppercase tracking-[0.2em] sm:mb-3 sm:text-xs">Email Address</label>
+              <input type="email" className="w-full rounded-xl sm:rounded-2xl bg-zinc-950/40 border border-zinc-800 p-3 sm:p-4 md:p-5 outline-none focus:border-sky-500 transition-all text-sm sm:text-lg text-white" placeholder="john@example.com" />
             </div>
           </div>
           <div>
-            <label className="block text-xs font-black text-zinc-500 mb-2 uppercase tracking-[0.2em] sm:mb-3">Message</label>
-            <textarea className="w-full rounded-xl sm:rounded-2xl bg-zinc-950/40 border border-zinc-800 p-3 sm:p-4 md:p-5 h-40 sm:h-56 outline-none focus:border-sky-500 transition-all resize-none text-base sm:text-lg text-white" placeholder="Briefly describe your project or inquiry..."></textarea>
+            <label className="block text-[10px] font-black text-zinc-500 mb-2 uppercase tracking-[0.2em] sm:mb-3 sm:text-xs">Message</label>
+            <textarea className="w-full rounded-xl sm:rounded-2xl bg-zinc-950/40 border border-zinc-800 p-3 sm:p-4 md:p-5 h-32 sm:h-56 outline-none focus:border-sky-500 transition-all resize-none text-sm sm:text-lg text-white" placeholder="Briefly describe your project or inquiry..."></textarea>
           </div>
-          <button className="w-full rounded-xl sm:rounded-2xl bg-sky-600 py-4 sm:py-5 md:py-6 font-bold text-white text-sm sm:text-base md:text-lg tracking-widest transition-all hover:bg-sky-500 hover:shadow-2xl hover:shadow-sky-500/20 active:scale-[0.99]">
+          <button className="w-full rounded-xl sm:rounded-2xl bg-sky-600 py-4 sm:py-5 md:py-6 font-bold text-white text-xs sm:text-base md:text-lg tracking-widest transition-all hover:bg-sky-500 hover:shadow-2xl hover:shadow-sky-500/20 active:scale-[0.99]">
             DISPATCH MESSAGE
           </button>
         </form>
       </GlassCard>
 
-      <div className="mt-12 grid grid-cols-1 gap-6 sm:gap-8 md:gap-12 md:grid-cols-3 text-center sm:mt-16 md:mt-24">
-        <div className="p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-[2rem] bg-zinc-950/40/30 border border-zinc-800 hover:border-sky-500/20 transition-all">
-          <h4 className="text-sky-500 font-black mb-3 uppercase tracking-[0.3em] text-xs sm:mb-4">Email</h4>
-          <p className="text-zinc-400 text-sm sm:text-base md:text-lg font-medium hover:text-white transition-colors cursor-pointer">rodelynruego8@gmail.com</p>
+      <div className="mt-12 grid grid-cols-1 gap-4 sm:gap-8 md:gap-12 md:grid-cols-3 text-center sm:mt-16 md:mt-24">
+        <div className="p-6 rounded-2xl bg-zinc-950/40 border border-zinc-800 hover:border-sky-500/20 transition-all sm:p-8 md:p-10 sm:rounded-[2rem]">
+          <h4 className="text-sky-500 font-black mb-2 uppercase tracking-[0.3em] text-[10px] sm:mb-4 sm:text-xs">Email</h4>
+          <p className="text-zinc-400 text-xs font-medium hover:text-white transition-colors cursor-pointer sm:text-base md:text-lg">rodelynruego8@gmail.com</p>
         </div>
-        <div className="p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-[2rem] bg-zinc-950/40/30 border border-zinc-800 hover:border-sky-500/20 transition-all">
-          <h4 className="text-sky-500 font-black mb-3 uppercase tracking-[0.3em] text-xs sm:mb-4">Facebook</h4>
-          <p className="text-zinc-400 text-sm sm:text-base md:text-lg font-medium hover:text-white transition-colors cursor-pointer">Rodelyn Lorica Ruego</p>
+        <div className="p-6 rounded-2xl bg-zinc-950/40 border border-zinc-800 hover:border-sky-500/20 transition-all sm:p-8 md:p-10 sm:rounded-[2rem]">
+          <h4 className="text-sky-500 font-black mb-2 uppercase tracking-[0.3em] text-[10px] sm:mb-4 sm:text-xs">Facebook</h4>
+          <p className="text-zinc-400 text-xs font-medium hover:text-white transition-colors cursor-pointer sm:text-base md:text-lg">Rodelyn Lorica Ruego</p>
         </div>
-        <div className="p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-[2rem] bg-zinc-950/40/30 border border-zinc-800 hover:border-sky-500/20 transition-all">
-          <h4 className="text-sky-500 font-black mb-3 uppercase tracking-[0.3em] text-xs sm:mb-4">Location</h4>
-          <p className="text-zinc-400 text-sm sm:text-base md:text-lg font-medium">Philippines, Davao del Norte</p>
+        <div className="p-6 rounded-2xl bg-zinc-950/40 border border-zinc-800 hover:border-sky-500/20 transition-all sm:p-8 md:p-10 sm:rounded-[2rem]">
+          <h4 className="text-sky-500 font-black mb-2 uppercase tracking-[0.3em] text-[10px] sm:mb-4 sm:text-xs">Location</h4>
+          <p className="text-zinc-400 text-xs font-medium sm:text-base md:text-lg">Philippines, Davao del Norte</p>
         </div>
       </div>
     </div>

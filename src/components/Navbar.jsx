@@ -50,7 +50,11 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <button className="md:hidden text-3xl text-white" onClick={() => setIsOpen(!isOpen)}>
+        <button 
+          className="md:hidden text-3xl text-white p-2 focus:outline-none transition-colors active:text-sky-500" 
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
           {isOpen ? '✕' : '☰'}
         </button>
       </div>
@@ -60,7 +64,7 @@ const Navbar = () => {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute w-full border-b border-zinc-800 bg-zinc-950/40 px-6 py-12 md:hidden"
+          className="absolute left-0 top-full w-full border-b border-zinc-800 bg-zinc-950/95 backdrop-blur-2xl px-6 py-12 md:hidden shadow-2xl"
         >
           <div className="flex flex-col gap-10 text-center">
             {links.map((link) => (

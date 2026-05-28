@@ -61,23 +61,23 @@ const BentoGrid = () => {
           </div>
 
           {/* Content Layer */}
-          <div className="relative z-10 flex h-full flex-col justify-end p-6 sm:p-8 md:p-10">
+          <div className="relative z-10 flex h-full flex-col justify-end p-5 sm:p-8 md:p-10">
             <div className="transform transition-transform duration-500 group-hover:-translate-y-2">
-              <span className="mb-4 inline-block text-xs font-black uppercase tracking-[0.4em] text-sky-500 group-hover:text-sky-400 transition-colors">
+              <span className="mb-2 inline-block text-[10px] font-black uppercase tracking-[0.4em] text-sky-500 group-hover:text-sky-400 transition-colors sm:mb-4 sm:text-xs">
                 {project.category}
               </span>
-              <h3 className="mb-4 text-xl font-bold tracking-tight text-white sm:text-2xl md:text-3xl lg:text-4xl leading-tight">
+              <h3 className="mb-3 text-lg font-bold tracking-tight text-white sm:text-2xl md:text-3xl lg:text-4xl leading-tight sm:mb-4">
                 {project.title}
               </h3>
-              <p className="mb-8 max-w-sm text-lg font-light leading-relaxed text-zinc-300 opacity-0 transition-all duration-500 group-hover:opacity-100">
+              <p className="mb-6 max-w-sm text-sm font-light leading-relaxed text-zinc-300 opacity-100 transition-all duration-500 md:opacity-0 md:group-hover:opacity-100 sm:text-lg sm:mb-8">
                 {project.description}
               </p>
 
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-xl bg-sky-500/10 px-5 py-2 text-xs font-bold uppercase tracking-widest text-sky-400 backdrop-blur-md border border-sky-500/20"
+                    className="rounded-lg bg-sky-500/10 px-3 py-1 text-[9px] font-bold uppercase tracking-widest text-sky-400 backdrop-blur-md border border-sky-500/20 sm:rounded-xl sm:px-5 sm:py-2 sm:text-xs"
                   >
                     {tag}
                   </span>

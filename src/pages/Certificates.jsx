@@ -135,67 +135,66 @@ const Certificates = () => {
               transition={{ duration: 0.6 }}
               className="h-full"
             >
-              <div className="group relative flex h-full flex-col overflow-hidden rounded-[2.5rem] bg-zinc-950/40 border border-zinc-800/50 hover:border-sky-500/40 transition-all duration-500 shadow-2xl backdrop-blur-sm">
+              <div className="group relative flex h-full flex-col overflow-hidden rounded-[2rem] bg-zinc-950/40 border border-zinc-800/50 hover:border-sky-500/40 transition-all duration-500 shadow-2xl backdrop-blur-sm md:rounded-[2.5rem]">
                 {/* Certificate Preview Image */}
-                <div className="relative aspect-[4/3] overflow-hidden p-4 shrink-0">
+                <div className="relative aspect-[4/3] overflow-hidden p-3 shrink-0 sm:p-4">
                   {/* Glowing Circle Animation Overlay */}
                   <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     <div className="h-32 w-32 rounded-full border border-sky-500/30 bg-sky-500/5 blur-sm scale-0 group-hover:scale-150 transition-transform duration-700 ease-out" />
-                    <div className="absolute h-24 w-24 rounded-full border-2 border-sky-500/20 scale-0 group-hover:scale-125 transition-transform duration-500 delay-100 ease-out" />
                   </div>
 
                   <div className="absolute inset-0 z-10 bg-gradient-to-t from-zinc-950/90 via-zinc-950/20 to-transparent opacity-60" />
                   <img
                     src={cert.image}
                     alt={cert.title}
-                    className="h-full w-full object-cover rounded-[1.5rem] transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
+                    className="h-full w-full object-cover rounded-[1.2rem] transition-all duration-700 group-hover:scale-110 group-hover:rotate-1 sm:rounded-[1.5rem]"
                   />
-                  <div className="absolute top-8 left-8 z-30">
-                    <span className="rounded-full bg-sky-600/90 px-5 py-2 text-[10px] font-black uppercase tracking-widest text-white backdrop-blur-md shadow-xl border border-sky-400/20">
+                  <div className="absolute top-6 left-6 z-30 sm:top-8 sm:left-8">
+                    <span className="rounded-full bg-sky-600/90 px-4 py-1.5 text-[9px] font-black uppercase tracking-widest text-white backdrop-blur-md shadow-xl border border-sky-400/20 sm:px-5 sm:py-2 sm:text-[10px]">
                       {cert.category}
                     </span>
                   </div>
                 </div>
 
                 {/* Certificate Details */}
-                <div className="flex flex-1 flex-col p-10 pt-4">
-                  <div className="mb-6 flex items-center gap-3 text-zinc-500">
-                    <Calendar size={16} className="text-sky-500/70" />
-                    <span className="text-xs font-bold uppercase tracking-[0.2em]">{cert.date}</span>
+                <div className="flex flex-1 flex-col p-6 pt-2 sm:p-10 sm:pt-4">
+                  <div className="mb-4 flex items-center gap-2 text-zinc-500 sm:mb-6 sm:gap-3">
+                    <Calendar size={14} className="text-sky-500/70 sm:w-4 sm:h-4" />
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] sm:text-xs">{cert.date}</span>
                   </div>
                   
-                  <h3 className="mb-4 text-2xl font-bold text-white group-hover:text-sky-400 transition-colors leading-tight min-h-[4rem]">
+                  <h3 className="mb-3 text-lg font-bold text-white group-hover:text-sky-400 transition-colors leading-tight min-h-[3rem] sm:mb-4 sm:text-2xl sm:min-h-[4rem]">
                     {cert.title}
                   </h3>
-                  <p className="mb-8 text-lg font-medium text-zinc-400">{cert.issuer}</p>
+                  <p className="mb-6 text-sm font-medium text-zinc-400 sm:mb-8 sm:text-lg">{cert.issuer}</p>
 
-                  <div className="mb-10 mt-auto space-y-5">
-                     <div className="flex items-center gap-3 text-sm text-zinc-500">
-                        <CheckCircle size={16} className="text-sky-500" />
-                        <span className="font-bold uppercase tracking-widest text-[10px]">Verified Credential</span>
+                  <div className="mb-8 mt-auto space-y-4 sm:mb-10 sm:space-y-5">
+                     <div className="flex items-center gap-2 text-[10px] text-zinc-500 sm:gap-3 sm:text-sm">
+                        <CheckCircle size={14} className="text-sky-500 sm:w-4 sm:h-4" />
+                        <span className="font-bold uppercase tracking-widest text-[9px]">Verified Credential</span>
                      </div>
-                     <div className="flex flex-wrap gap-2.5">
+                     <div className="flex flex-wrap gap-2 sm:gap-2.5">
                       {cert.skills.map(skill => (
-                        <span key={skill} className="px-4 py-2 rounded-xl bg-zinc-950/40/50 text-[10px] text-zinc-400 font-bold border border-zinc-800 uppercase tracking-widest group-hover:border-sky-500/20 transition-colors">
+                        <span key={skill} className="px-3 py-1.5 rounded-lg bg-zinc-900/50 text-[9px] text-zinc-400 font-bold border border-zinc-800 uppercase tracking-widest group-hover:border-sky-500/20 transition-colors sm:px-4 sm:py-2 sm:rounded-xl sm:text-[10px]">
                           {skill}
                         </span>
                       ))}
                      </div>
                   </div>
 
-                  <div className="flex items-center justify-between border-t border-zinc-800/50 pt-8">
+                  <div className="flex items-center justify-between border-t border-zinc-800/50 pt-6 sm:pt-8">
                     <div className="flex flex-col">
-                      <span className="text-[9px] font-black uppercase tracking-widest text-zinc-600 mb-1">Credential ID</span>
-                      <span className="text-xs font-mono text-zinc-500 tracking-tighter">{cert.credentialId}</span>
+                      <span className="text-[8px] font-black uppercase tracking-widest text-zinc-600 mb-1 sm:text-[9px]">Credential ID</span>
+                      <span className="text-[10px] font-mono text-zinc-500 tracking-tighter sm:text-xs">{cert.credentialId}</span>
                     </div>
-                    <button className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-600/10 text-sky-500 hover:bg-sky-600 hover:text-white transition-all shadow-lg border border-sky-500/20 group-hover:shadow-sky-500/20">
-                      <ExternalLink size={20} />
+                    <button className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-600/10 text-sky-500 hover:bg-sky-600 hover:text-white transition-all shadow-lg border border-sky-500/20 group-hover:shadow-sky-500/20 sm:h-12 sm:w-12 sm:rounded-2xl">
+                      <ExternalLink size={18} sm:size={20} />
                     </button>
                   </div>
                 </div>
 
                 {/* Bottom Decorative Bar */}
-                <div className="absolute bottom-0 left-0 h-1.5 w-0 bg-gradient-to-r from-sky-600 to-sky-400 transition-all duration-700 group-hover:w-full" />
+                <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-sky-600 to-sky-400 transition-all duration-700 group-hover:w-full md:h-1.5" />
               </div>
             </motion.div>
           ))}
@@ -206,18 +205,18 @@ const Certificates = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-48 p-16 md:p-24 rounded-[3.5rem] bg-gradient-to-br from-zinc-900/40 to-zinc-950/40 border border-zinc-800/50 text-center backdrop-blur-md relative overflow-hidden"
+          className="mt-24 p-8 rounded-[2rem] bg-gradient-to-br from-zinc-900/40 to-zinc-950/40 border border-zinc-800/50 text-center backdrop-blur-md relative overflow-hidden sm:mt-48 sm:p-16 md:p-24 md:rounded-[3.5rem]"
         >
           <div className="absolute top-0 right-0 -mr-20 -mt-20 h-64 w-64 rounded-full bg-sky-600/5 blur-[80px]" />
           
           <div className="relative z-10">
-            <div className="flex justify-center mb-10">
-              <div className="h-24 w-24 rounded-[2rem] bg-sky-600/10 flex items-center justify-center text-sky-500 border border-sky-500/20 shadow-2xl">
-                <Award size={48} />
+            <div className="flex justify-center mb-6 sm:mb-10">
+              <div className="h-16 w-16 rounded-2xl bg-sky-600/10 flex items-center justify-center text-sky-500 border border-sky-500/20 shadow-2xl sm:h-24 sm:w-24 sm:rounded-[2rem]">
+                <Award size={32} className="sm:w-12 sm:h-12" />
               </div>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 tracking-tight">Commitment to Excellence</h2>
-            <p className="max-w-2xl mx-auto text-xl text-zinc-400 font-light leading-relaxed">
+            <h2 className="text-2xl font-bold text-white mb-4 tracking-tight sm:text-4xl md:text-5xl sm:mb-8">Commitment to Excellence</h2>
+            <p className="max-w-2xl mx-auto text-sm text-zinc-400 font-light leading-relaxed sm:text-xl">
               I actively pursue advanced certifications and technical milestones to ensure my engineering systems remain at the forefront of digital efficiency and performance.
             </p>
           </div>

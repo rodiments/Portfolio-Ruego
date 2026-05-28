@@ -246,19 +246,19 @@ const Projects = () => {
 
       {/* Dynamic Content Sections */}
       {academicContent.map((section) => (
-        <section key={section.id} id={section.id} className="mb-24 sm:mb-32 md:mb-48 scroll-mt-32">
+        <section key={section.id} id={section.id} className="mb-16 sm:mb-32 md:mb-48 scroll-mt-32">
           {/* Section Heading */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="mb-10 sm:mb-12 md:mb-16 flex flex-col border-b border-zinc-800 pb-6 sm:pb-8 md:pb-10"
+            className="mb-8 sm:mb-12 md:mb-16 flex flex-col border-b border-zinc-800 pb-4 sm:pb-8 md:pb-10"
           >
             <div className="flex items-end justify-between">
               <div>
-                <span className="text-xs font-black uppercase tracking-[0.3em] text-sky-500">{section.year}</span>
-                <h2 className="mt-3 text-2xl font-bold text-white sm:text-3xl md:text-4xl">{section.isFeatured ? 'Primary Milestone' : 'Academic Explorations'}</h2>
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-sky-500 md:text-xs">{section.year}</span>
+                <h2 className="mt-2 text-xl font-bold text-white sm:text-3xl md:text-4xl sm:mt-3">{section.isFeatured ? 'Primary Milestone' : 'Academic Explorations'}</h2>
               </div>
             </div>
             {section.summary && (
@@ -267,7 +267,7 @@ const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                className="mt-4 max-w-4xl text-sm text-zinc-400 font-light italic leading-relaxed sm:mt-5 sm:text-base md:mt-6 md:text-lg"
+                className="mt-3 max-w-4xl text-xs text-zinc-400 font-light italic leading-relaxed sm:mt-5 sm:text-base md:mt-6 md:text-lg"
               >
                 {section.summary}
               </motion.p>
@@ -281,22 +281,22 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="group relative overflow-hidden rounded-2xl sm:rounded-3xl lg:rounded-[3rem] bg-zinc-950/40/50 border border-zinc-800 shadow-2xl cursor-pointer hover:border-sky-600/40 transition-colors"
+              className="group relative overflow-hidden rounded-2xl sm:rounded-3xl lg:rounded-[3rem] bg-zinc-950/40 border border-zinc-800 shadow-2xl cursor-pointer hover:border-sky-600/40 transition-colors"
               onClick={() => setSelectedProject({ ...section, section: section })}
             >
               <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="relative aspect-square lg:aspect-auto overflow-hidden">
+                <div className="relative aspect-video lg:aspect-auto overflow-hidden">
                   <img src={section.image} alt={section.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/80 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent lg:bg-gradient-to-r" />
                 </div>
-                <div className="flex flex-col justify-center p-6 sm:p-8 md:p-12 lg:p-20">
+                <div className="flex flex-col justify-center p-6 sm:p-10 md:p-12 lg:p-20">
                   <motion.div 
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3 }}
                     className="mb-4 sm:mb-6 md:mb-8 flex gap-3 sm:gap-4"
                   >
-                    <span className="flex items-center gap-2 rounded-full bg-sky-600/10 px-4 py-2 text-[10px] sm:text-xs font-black uppercase tracking-widest text-sky-400 border border-sky-500/20">
+                    <span className="flex items-center gap-2 rounded-full bg-sky-600/10 px-3 py-1.5 text-[9px] font-black uppercase tracking-widest text-sky-400 border border-sky-500/20 sm:px-4 sm:py-2 sm:text-[10px]">
                       <Cpu size={12} className="sm:w-4 sm:h-4" /> Systems Engineering
                     </span>
                   </motion.div>
@@ -304,7 +304,7 @@ const Projects = () => {
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="text-2xl font-bold text-white mb-3 leading-tight sm:text-3xl md:text-4xl lg:text-5xl md:mb-4 lg:mb-6"
+                    className="text-xl font-bold text-white mb-3 leading-tight sm:text-3xl md:text-4xl lg:text-5xl md:mb-4 lg:mb-6"
                   >
                     {section.title}
                   </motion.h3>
@@ -312,7 +312,7 @@ const Projects = () => {
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
-                    className="text-zinc-400 text-sm font-light leading-relaxed mb-6 sm:text-base md:text-lg md:mb-8 lg:mb-10"
+                    className="text-zinc-400 text-xs font-light leading-relaxed mb-6 sm:text-base md:text-lg md:mb-8 lg:mb-10"
                   >
                     {section.description}
                   </motion.p>
@@ -321,27 +321,27 @@ const Projects = () => {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.6 }}
-                    className="grid grid-cols-2 gap-6 sm:gap-8 md:gap-10 mb-8 sm:mb-10 md:mb-12 border-y border-zinc-800 py-6 sm:py-8 md:py-10"
+                    className="grid grid-cols-2 gap-4 mb-6 border-y border-zinc-800 py-4 sm:gap-8 sm:mb-10 md:gap-10 md:py-10 md:mb-12"
                   >
                     <div>
-                      <span className="text-xs font-black uppercase tracking-widest text-zinc-600 block mb-2">Role</span>
-                      <span className="text-white text-sm sm:text-base md:text-lg font-medium">{section.role}</span>
+                      <span className="text-[9px] font-black uppercase tracking-widest text-zinc-600 block mb-1 sm:text-xs sm:mb-2">Role</span>
+                      <span className="text-white text-xs sm:text-base md:text-lg font-medium">{section.role}</span>
                     </div>
                     <div>
-                      <span className="text-xs font-black uppercase tracking-widest text-zinc-600 block mb-2">Status</span>
-                      <span className="text-white text-sm sm:text-base md:text-lg font-medium">{section.outcome}</span>
+                      <span className="text-[9px] font-black uppercase tracking-widest text-zinc-600 block mb-1 sm:text-xs sm:mb-2">Status</span>
+                      <span className="text-white text-xs sm:text-base md:text-lg font-medium">{section.outcome}</span>
                     </div>
                   </motion.div>
 
-                  <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
+                  <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
                     <motion.div 
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.7 }}
-                      className="flex flex-wrap gap-3"
+                      className="flex flex-wrap gap-2"
                     >
                       {section.tags.map(tag => (
-                        <span key={tag} className="px-5 py-2 rounded-xl bg-sky-600/10 text-sky-400 text-xs font-bold border border-sky-500/20 uppercase tracking-widest">
+                        <span key={tag} className="px-3 py-1 rounded-lg bg-sky-600/10 text-sky-400 text-[9px] font-bold border border-sky-500/20 uppercase tracking-widest sm:px-5 sm:py-2 sm:rounded-xl sm:text-xs">
                           {tag}
                         </span>
                       ))}
@@ -351,9 +351,9 @@ const Projects = () => {
                       initial={{ opacity: 0, x: 20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.8 }}
-                      className="group/btn flex items-center gap-3 rounded-2xl bg-sky-600 px-8 py-4 text-sm font-bold uppercase tracking-widest text-white shadow-lg shadow-sky-500/20 transition-all hover:bg-sky-500 hover:shadow-sky-500/40"
+                      className="group/btn flex items-center justify-center gap-3 rounded-xl bg-sky-600 px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg shadow-sky-500/20 transition-all hover:bg-sky-500 hover:shadow-sky-500/40 sm:rounded-2xl sm:px-8 sm:py-4 sm:text-sm"
                     >
-                      View Details <ArrowRight size={18} className="transition-transform group-hover/btn:translate-x-1" />
+                      View Details <ArrowRight size={16} className="transition-transform group-hover/btn:translate-x-1 sm:w-[18px] sm:h-[18px]" />
                     </motion.button>
                   </div>
                 </div>
@@ -382,42 +382,42 @@ const Projects = () => {
                     show: { opacity: 1, y: 0, scale: 1 }
                   }}
                   transition={{ duration: 0.6 }}
-                  className="group relative flex flex-col rounded-[2.5rem] bg-zinc-950/40 border border-zinc-800 overflow-hidden transition-all hover:border-sky-600/40 shadow-xl cursor-pointer hover:shadow-[0_20px_60px_rgba(14,165,233,0.05)]"
+                  className="group relative flex flex-col rounded-[2rem] bg-zinc-950/40 border border-zinc-800 overflow-hidden transition-all hover:border-sky-600/40 shadow-xl cursor-pointer hover:shadow-[0_20px_60px_rgba(14,165,233,0.05)] md:rounded-[2.5rem]"
                   onClick={() => setSelectedProject({ ...project, section: section })}
                 >
-                  <div className="p-6">
+                  <div className="p-4 sm:p-6">
                     {project.isCarousel ? (
                       <ImageCarousel images={project.carouselImages} title={project.title} />
                     ) : (
-                      <div className="aspect-video overflow-hidden rounded-[1.5rem]">
+                      <div className="aspect-video overflow-hidden rounded-[1.2rem] sm:rounded-[1.5rem]">
                         <img src={project.image} alt={project.title} className="h-full w-full object-cover" />
                       </div>
                     )}
                   </div>
                   
-                  <div className="p-10 pt-4">
-                    <div className="mb-6 flex items-center justify-between">
-                      <span className="text-xs font-black uppercase tracking-widest text-sky-500">{project.role}</span>
+                  <div className="p-6 pt-0 sm:p-10 sm:pt-4">
+                    <div className="mb-4 flex items-center justify-between sm:mb-6">
+                      <span className="text-[10px] font-black uppercase tracking-widest text-sky-500">{project.role}</span>
                       <button 
                         onClick={(e) => toggleSave(e, project.title)}
-                        className={`p-3 rounded-xl transition-colors ${savedProjects.includes(project.title) ? 'text-sky-500 bg-sky-500/10' : 'text-zinc-600 hover:text-white hover:bg-slate-200'}`}
+                        className={`p-2 rounded-lg transition-colors sm:p-3 sm:rounded-xl ${savedProjects.includes(project.title) ? 'text-sky-500 bg-sky-500/10' : 'text-zinc-600 hover:text-white hover:bg-zinc-800'}`}
                       >
-                        <Star size={18} fill={savedProjects.includes(project.title) ? "currentColor" : "none"} />
+                        <Star size={16} fill={savedProjects.includes(project.title) ? "currentColor" : "none"} className="sm:w-[18px] sm:h-[18px]" />
                       </button>
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-4 leading-tight">{project.title}</h3>
-                    <p className="text-lg text-zinc-400 font-light leading-relaxed mb-8">{project.description}</p>
-                    <div className="flex flex-wrap gap-3 mb-10">
+                    <h3 className="text-xl font-bold text-white mb-3 leading-tight sm:text-2xl sm:mb-4">{project.title}</h3>
+                    <p className="text-sm text-zinc-400 font-light leading-relaxed mb-6 sm:text-lg sm:mb-8">{project.description}</p>
+                    <div className="flex flex-wrap gap-2 mb-8 sm:gap-3 sm:mb-10">
                       {project.tags.map(tag => (
-                        <span key={tag} className="px-4 py-2 rounded-xl bg-zinc-950/40 text-zinc-400 text-[10px] font-black uppercase tracking-widest border border-zinc-800 group-hover:border-sky-600/20 transition-colors">
+                        <span key={tag} className="px-3 py-1.5 rounded-lg bg-zinc-950/40 text-zinc-400 text-[9px] font-black uppercase tracking-widest border border-zinc-800 group-hover:border-sky-600/20 transition-colors sm:px-4 sm:py-2 sm:rounded-xl sm:text-[10px]">
                           {tag}
                         </span>
                       ))}
                     </div>
                     <div 
-                      className="mt-auto flex items-center justify-center gap-3 rounded-2xl bg-sky-600/10 py-5 text-sm font-bold uppercase tracking-widest text-sky-500 border border-sky-500/20 transition-all group-hover:bg-sky-600 group-hover:text-white group-hover:shadow-lg group-hover:shadow-sky-500/20"
+                      className="mt-auto flex items-center justify-center gap-3 rounded-xl bg-sky-600/10 py-4 text-[10px] font-bold uppercase tracking-widest text-sky-500 border border-sky-500/20 transition-all group-hover:bg-sky-600 group-hover:text-white group-hover:shadow-lg group-hover:shadow-sky-500/20 sm:rounded-2xl sm:py-5 sm:text-sm"
                     >
-                      View Details <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+                      View Details <ArrowRight size={16} className="transition-transform group-hover:translate-x-1 sm:w-[18px] sm:h-[18px]" />
                     </div>
                   </div>
                 </motion.div>
@@ -435,90 +435,90 @@ const Projects = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedProject(null)}
-            className="fixed inset-0 bg-zinc-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-zinc-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-zinc-950/40 rounded-[2.5rem] border border-zinc-800 max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-[0_20px_100px_rgba(0,0,0,0.8)]"
+              className="bg-zinc-900 rounded-[2rem] border border-zinc-800 max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-[0_20px_100px_rgba(0,0,0,0.8)] sm:rounded-[2.5rem]"
             >
               {/* Modal Header with Close */}
-              <div className="sticky top-0 z-10 flex items-center justify-between p-8 border-b border-zinc-800 bg-zinc-950/40/95 backdrop-blur">
+              <div className="sticky top-0 z-10 flex items-center justify-between p-6 border-b border-zinc-800 bg-zinc-900/95 backdrop-blur sm:p-8">
                 <div>
-                  <p className="text-xs font-black uppercase tracking-[0.3em] text-sky-500 mb-2">
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-sky-500 mb-1 sm:text-xs sm:mb-2">
                     {selectedProject.section?.year || 'Project'}
                   </p>
-                  <h2 className="text-3xl font-bold text-white">{selectedProject.title}</h2>
+                  <h2 className="text-xl font-bold text-white sm:text-3xl">{selectedProject.title}</h2>
                 </div>
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="p-3 rounded-xl bg-slate-100 hover:bg-slate-200 transition-colors"
+                  className="p-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors text-white sm:p-3 sm:rounded-xl"
                 >
-                  <X size={24} className="text-white" />
+                  <X size={20} className="sm:w-6 sm:h-6" />
                 </button>
               </div>
 
               {/* Modal Content */}
-              <div className="p-8 md:p-12">
+              <div className="p-6 sm:p-8 md:p-12">
                 {/* Gallery/Images */}
-                <div className="mb-12">
+                <div className="mb-8 sm:mb-12">
                   {selectedProject.isCarousel ? (
-                    <div className="rounded-[1.5rem] overflow-hidden border border-zinc-800 shadow-lg">
+                    <div className="rounded-[1.2rem] overflow-hidden border border-zinc-800 shadow-lg sm:rounded-[1.5rem]">
                       <ImageCarousel images={selectedProject.carouselImages} title={selectedProject.title} />
                     </div>
                   ) : (
                     <img
                       src={selectedProject.image}
                       alt={selectedProject.title}
-                      className="w-full rounded-[1.5rem] object-cover border border-zinc-800 shadow-md"
+                      className="w-full rounded-[1.2rem] object-cover border border-zinc-800 shadow-md sm:rounded-[1.5rem]"
                     />
                   )}
                 </div>
 
                 {/* Project Details */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8 sm:gap-8 sm:mb-12">
                   <div>
-                    <p className="text-xs font-black uppercase tracking-[0.3em] text-zinc-500 mb-2">Role</p>
-                    <p className="text-lg font-semibold text-white">{selectedProject.role || 'Designer'}</p>
+                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500 mb-1 sm:text-xs sm:mb-2">Role</p>
+                    <p className="text-sm font-semibold text-white sm:text-lg">{selectedProject.role || 'Designer'}</p>
                   </div>
                   <div>
-                    <p className="text-xs font-black uppercase tracking-[0.3em] text-zinc-500 mb-2">Duration</p>
-                    <p className="text-lg font-semibold text-white">{selectedProject.section?.year || 'Ongoing'}</p>
+                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500 mb-1 sm:text-xs sm:mb-2">Duration</p>
+                    <p className="text-sm font-semibold text-white sm:text-lg">{selectedProject.section?.year || 'Ongoing'}</p>
                   </div>
-                  <div>
-                    <p className="text-xs font-black uppercase tracking-[0.3em] text-zinc-500 mb-2">Status</p>
-                    <p className="text-lg font-semibold text-sky-600">{selectedProject.outcome || 'Completed'}</p>
+                  <div className="col-span-2 md:col-span-1">
+                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500 mb-1 sm:text-xs sm:mb-2">Status</p>
+                    <p className="text-sm font-semibold text-sky-600 sm:text-lg">{selectedProject.outcome || 'Completed'}</p>
                   </div>
                 </div>
 
                 {/* Description */}
-                <div className="mb-12">
-                  <h3 className="text-2xl font-bold text-white mb-4">About This Project</h3>
-                  <p className="text-lg text-zinc-400 font-light leading-relaxed mb-6">
+                <div className="mb-8 sm:mb-12">
+                  <h3 className="text-lg font-bold text-white mb-3 sm:text-2xl sm:mb-4">About This Project</h3>
+                  <p className="text-sm text-zinc-400 font-light leading-relaxed mb-4 sm:text-lg sm:mb-6">
                     {selectedProject.description}
                   </p>
                   {selectedProject.summary && (
-                    <p className="text-base text-zinc-500 font-light italic leading-relaxed border-l-4 border-sky-500/30 pl-4">
+                    <p className="text-xs text-zinc-500 font-light italic leading-relaxed border-l-4 border-sky-500/30 pl-4 sm:text-base">
                       {selectedProject.summary}
                     </p>
                   )}
                 </div>
 
                 {/* Technologies/Tags */}
-                <div className="mb-12">
-                  <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                    <Tag size={20} className="text-sky-500" />
+                <div className="mb-8 sm:mb-12">
+                  <h3 className="text-base font-bold text-white mb-4 flex items-center gap-2 sm:text-xl sm:mb-6">
+                    <Tag size={18} className="text-sky-500 sm:w-5 sm:h-5" />
                     Technologies & Skills
                   </h3>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-2 sm:gap-3">
                     {selectedProject.tags.map((tag) => (
                       <motion.span
                         key={tag}
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="px-5 py-3 rounded-xl bg-sky-600/10 text-sky-400 border border-sky-500/30 font-semibold text-sm uppercase tracking-wide hover:bg-sky-600/20 transition-colors"
+                        className="px-3 py-1.5 rounded-lg bg-sky-600/10 text-sky-400 border border-sky-500/30 font-semibold text-[10px] uppercase tracking-wide hover:bg-sky-600/20 transition-colors sm:px-5 sm:py-3 sm:rounded-xl sm:text-sm"
                       >
                         {tag}
                       </motion.span>
@@ -531,11 +531,11 @@ const Projects = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="flex gap-4 pt-8 border-t border-zinc-800"
+                  className="flex gap-4 pt-6 border-t border-zinc-800 sm:pt-8"
                 >
                   <button
                     onClick={() => setSelectedProject(null)}
-                    className="flex-1 rounded-xl bg-sky-600 text-white font-bold py-4 px-6 transition-all hover:bg-sky-500 hover:shadow-[0_0_30px_rgba(14,165,233,0.3)] uppercase tracking-wide"
+                    className="flex-1 rounded-xl bg-sky-600 text-white font-bold py-3 px-6 transition-all hover:bg-sky-500 hover:shadow-[0_0_30px_rgba(14,165,233,0.3)] uppercase tracking-wide text-xs sm:py-4 sm:text-sm"
                   >
                     Close
                   </button>
