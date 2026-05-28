@@ -197,13 +197,13 @@ const Projects = () => {
   };
 
   return (
-    <div className="mx-auto max-w-7xl px-6 pt-32 sm:px-8 lg:px-12">
+    <div className="mx-auto max-w-7xl px-4 pt-24 sm:px-6 md:pt-32 lg:px-12">
       {/* Header Section */}
-      <header className="mb-24">
+      <header className="mb-16 sm:mb-20 md:mb-24">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-6 inline-block border-l-4 border-sky-600 px-6 py-2 text-sm font-bold uppercase tracking-[0.3em] text-sky-500"
+          className="mb-4 inline-block border-l-4 border-sky-600 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-sky-500 sm:mb-6 sm:px-6 sm:text-sm"
         >
           Project Showcase
         </motion.div>
@@ -211,7 +211,7 @@ const Projects = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-5xl md:text-6xl font-bold tracking-tight text-white mb-6"
+          className="text-3xl font-bold tracking-tight text-white mb-4 sm:text-4xl sm:mb-6 md:text-5xl lg:text-6xl"
         >
           Design & Development <span className="text-sky-500">Journey</span>
         </motion.h1>
@@ -219,20 +219,20 @@ const Projects = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-lg md:text-xl text-zinc-400 font-light leading-relaxed max-w-3xl"
+          className="text-sm text-zinc-400 font-light leading-relaxed max-w-3xl sm:text-base md:text-lg lg:text-xl"
         >
           Exploring the intersection of thoughtful design and technical execution. Each project represents a learning milestone in my journey as a UI/UX designer and developer.
         </motion.p>
       </header>
 
       {/* Floating Quick Nav */}
-      <nav className="sticky top-24 z-40 mb-20 flex justify-center">
-        <div className="flex items-center gap-2 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-2 backdrop-blur-xl shadow-2xl">
+      <nav className="sticky top-20 z-40 mb-12 sm:mb-16 md:mb-20 flex justify-center overflow-x-auto">
+        <div className="flex items-center gap-1 sm:gap-2 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-1 sm:p-2 backdrop-blur-xl shadow-2xl">
           {academicContent.map((section) => (
             <button
               key={section.id}
               onClick={() => scrollToSection(section.id)}
-              className={`px-8 py-3 text-xs font-bold uppercase tracking-widest transition-all rounded-xl ${
+              className={`px-4 py-2 sm:px-6 sm:py-3 text-[10px] sm:text-xs font-bold uppercase tracking-widest transition-all rounded-lg sm:rounded-xl ${
                 activeYear === section.id 
                 ? 'bg-sky-600 text-white shadow-lg shadow-sky-500/20' 
                 : 'text-zinc-500 hover:text-zinc-300'
@@ -246,19 +246,19 @@ const Projects = () => {
 
       {/* Dynamic Content Sections */}
       {academicContent.map((section) => (
-        <section key={section.id} id={section.id} className="mb-48 scroll-mt-48">
+        <section key={section.id} id={section.id} className="mb-24 sm:mb-32 md:mb-48 scroll-mt-32">
           {/* Section Heading */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="mb-16 flex flex-col border-b border-zinc-800 pb-10"
+            className="mb-10 sm:mb-12 md:mb-16 flex flex-col border-b border-zinc-800 pb-6 sm:pb-8 md:pb-10"
           >
             <div className="flex items-end justify-between">
               <div>
-                <span className="text-xs font-black uppercase tracking-[0.4em] text-sky-500">{section.year}</span>
-                <h2 className="mt-4 text-4xl font-bold text-white">{section.isFeatured ? 'Primary Milestone' : 'Academic Explorations'}</h2>
+                <span className="text-xs font-black uppercase tracking-[0.3em] text-sky-500">{section.year}</span>
+                <h2 className="mt-3 text-2xl font-bold text-white sm:text-3xl md:text-4xl">{section.isFeatured ? 'Primary Milestone' : 'Academic Explorations'}</h2>
               </div>
             </div>
             {section.summary && (
@@ -267,7 +267,7 @@ const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                className="mt-6 max-w-4xl text-lg text-zinc-400 font-light italic leading-relaxed"
+                className="mt-4 max-w-4xl text-sm text-zinc-400 font-light italic leading-relaxed sm:mt-5 sm:text-base md:mt-6 md:text-lg"
               >
                 {section.summary}
               </motion.p>
@@ -281,7 +281,7 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="group relative overflow-hidden rounded-[3rem] bg-zinc-950/40/50 border border-zinc-800 shadow-2xl cursor-pointer hover:border-sky-600/40 transition-colors"
+              className="group relative overflow-hidden rounded-2xl sm:rounded-3xl lg:rounded-[3rem] bg-zinc-950/40/50 border border-zinc-800 shadow-2xl cursor-pointer hover:border-sky-600/40 transition-colors"
               onClick={() => setSelectedProject({ ...section, section: section })}
             >
               <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -289,22 +289,22 @@ const Projects = () => {
                   <img src={section.image} alt={section.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/80 to-transparent" />
                 </div>
-                <div className="flex flex-col justify-center p-12 lg:p-20">
+                <div className="flex flex-col justify-center p-6 sm:p-8 md:p-12 lg:p-20">
                   <motion.div 
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="mb-8 flex gap-4"
+                    className="mb-4 sm:mb-6 md:mb-8 flex gap-3 sm:gap-4"
                   >
-                    <span className="flex items-center gap-2 rounded-full bg-sky-600/10 px-5 py-2 text-xs font-black uppercase tracking-widest text-sky-400 border border-sky-500/20">
-                      <Cpu size={14} /> Systems Engineering
+                    <span className="flex items-center gap-2 rounded-full bg-sky-600/10 px-4 py-2 text-[10px] sm:text-xs font-black uppercase tracking-widest text-sky-400 border border-sky-500/20">
+                      <Cpu size={12} className="sm:w-4 sm:h-4" /> Systems Engineering
                     </span>
                   </motion.div>
                   <motion.h3 
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="text-5xl font-bold text-white mb-6 leading-tight"
+                    className="text-2xl font-bold text-white mb-3 leading-tight sm:text-3xl md:text-4xl lg:text-5xl md:mb-4 lg:mb-6"
                   >
                     {section.title}
                   </motion.h3>
@@ -312,7 +312,7 @@ const Projects = () => {
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
-                    className="text-zinc-400 text-lg font-light leading-relaxed mb-10"
+                    className="text-zinc-400 text-sm font-light leading-relaxed mb-6 sm:text-base md:text-lg md:mb-8 lg:mb-10"
                   >
                     {section.description}
                   </motion.p>
@@ -321,19 +321,19 @@ const Projects = () => {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.6 }}
-                    className="grid grid-cols-2 gap-10 mb-12 border-y border-zinc-800 py-10"
+                    className="grid grid-cols-2 gap-6 sm:gap-8 md:gap-10 mb-8 sm:mb-10 md:mb-12 border-y border-zinc-800 py-6 sm:py-8 md:py-10"
                   >
                     <div>
                       <span className="text-xs font-black uppercase tracking-widest text-zinc-600 block mb-2">Role</span>
-                      <span className="text-white text-lg font-medium">{section.role}</span>
+                      <span className="text-white text-sm sm:text-base md:text-lg font-medium">{section.role}</span>
                     </div>
                     <div>
                       <span className="text-xs font-black uppercase tracking-widest text-zinc-600 block mb-2">Status</span>
-                      <span className="text-white text-lg font-medium">{section.outcome}</span>
+                      <span className="text-white text-sm sm:text-base md:text-lg font-medium">{section.outcome}</span>
                     </div>
                   </motion.div>
 
-                  <div className="flex flex-col sm:flex-row items-center gap-6">
+                  <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
                     <motion.div 
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -372,7 +372,7 @@ const Projects = () => {
                   transition: { staggerChildren: 0.15 }
                 }
               }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-12"
+              className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 md:gap-10 lg:gap-12"
             >
               {section.projects.map((project, idx) => (
                 <motion.div

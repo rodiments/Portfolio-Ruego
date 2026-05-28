@@ -97,17 +97,17 @@ const Certificates = () => {
         <div className="absolute top-[30%] right-[10%] h-[300px] w-[300px] rounded-full bg-slate-200/10 blur-[80px]" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-32 sm:px-8 lg:px-12 pb-48">
-        <div className="mb-24">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-24 sm:px-6 md:pt-32 lg:px-12 pb-24 sm:pb-32 md:pb-48">
+        <div className="mb-16 sm:mb-20 md:mb-24">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-6 inline-block border-l-4 border-sky-600 px-6 py-2 text-sm font-bold uppercase tracking-[0.3em] text-sky-500"
+            className="mb-4 inline-block border-l-4 border-sky-600 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-sky-500 sm:mb-6 sm:px-6 sm:text-sm"
           >
             Credentials & Awards
           </motion.div>
-          <h1 className="text-6xl font-bold tracking-tight text-white sm:text-7xl">Certifi<span className="text-sky-500">cates.</span></h1>
-          <p className="mt-10 max-w-3xl text-xl text-zinc-400 font-light leading-relaxed">
+          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">Certifi<span className="text-sky-500">cates.</span></h1>
+          <p className="mt-4 max-w-3xl text-sm text-zinc-400 font-light leading-relaxed sm:mt-6 sm:text-base md:mt-10 md:text-lg">
             A collection of verified academic achievements and professional certifications that validate technical expertise.
           </p>
         </div>
@@ -123,7 +123,7 @@ const Certificates = () => {
               transition: { staggerChildren: 0.15 }
             }
           }}
-          className="grid grid-cols-1 gap-14 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr"
+          className="grid grid-cols-1 gap-6 sm:gap-8 md:gap-10 lg:gap-14 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr"
         >
           {certificates.map((cert, index) => (
             <motion.div

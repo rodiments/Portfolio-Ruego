@@ -7,7 +7,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="relative mx-auto max-w-7xl px-6 pt-32 sm:px-8 lg:px-12">
+    <div className="relative mx-auto max-w-7xl px-4 pt-24 sm:px-6 md:pt-32 sm:pt-28 lg:px-12">
       {/* Subtle Page Gradient */}
       <div className="absolute inset-0 -z-20 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 h-[800px] w-[800px] rounded-full bg-sky-400/10 blur-[120px] opacity-50" />
@@ -15,12 +15,12 @@ const Home = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="mb-48 flex flex-col items-center justify-between gap-20 md:flex-row md:text-left">
+      <section className="mb-24 flex flex-col items-center justify-between gap-10 md:mb-48 md:gap-20 md:flex-row md:text-left">
         <div className="flex-1 text-center md:text-left">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-8 inline-flex items-center gap-3 rounded-full bg-sky-500/10 px-6 py-2 text-sm font-semibold tracking-wider text-sky-600 border border-sky-500/20"
+            className="mb-6 inline-flex items-center gap-2 rounded-full bg-sky-500/10 px-4 py-2 text-xs font-semibold tracking-wider text-sky-600 border border-sky-500/20 md:mb-8 md:px-6 md:text-sm"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
@@ -33,7 +33,7 @@ const Home = () => {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-6xl font-bold tracking-tight text-white sm:text-7xl lg:text-8xl leading-tight"
+            className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight"
           >
             Hi, I'm <span className="text-sky-600">Rodelyn</span>.
           </motion.h1>
@@ -42,7 +42,7 @@ const Home = () => {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="mt-10 max-w-2xl text-xl font-light leading-relaxed tracking-wide text-zinc-400 sm:text-2xl"
+            className="mt-6 max-w-2xl text-base font-light leading-relaxed tracking-wide text-zinc-400 sm:text-lg md:mt-10 md:text-xl lg:text-2xl"
           >
             I design <span className="text-white font-medium">beautiful, intuitive digital experiences</span> that solve real problems. Specializing in user-centered design, accessible interfaces, and creating seamless interactions that users love.
           </motion.p>
@@ -51,17 +51,17 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="mt-14 flex flex-wrap justify-center gap-6 md:justify-start"
+            className="mt-8 flex flex-col gap-4 justify-center sm:flex-row sm:gap-6 md:mt-14 md:justify-start"
           >
             <button 
               onClick={() => navigate('/projects')}
-              className="group relative overflow-hidden rounded-2xl bg-sky-600 px-10 py-5 text-sm font-bold tracking-widest text-white transition-all hover:bg-sky-500 hover:shadow-[0_0_40px_rgba(14,165,233,0.4)] active:scale-95 cursor-pointer"
+              className="group relative overflow-hidden rounded-2xl bg-sky-600 px-6 py-3 text-xs font-bold tracking-widest text-white transition-all hover:bg-sky-500 hover:shadow-[0_0_40px_rgba(14,165,233,0.4)] active:scale-95 cursor-pointer sm:px-8 sm:py-4 sm:text-sm md:px-10 md:py-5"
             >
               EXPLORE MY WORK
             </button>
             <button 
               onClick={() => navigate('/contact')}
-              className="group relative rounded-2xl border border-sky-500/50 bg-sky-500/5 px-10 py-5 text-sm font-bold tracking-widest text-sky-600 transition-all hover:border-sky-400 hover:bg-sky-500/10 hover:text-sky-700 active:scale-95 cursor-pointer"
+              className="group relative rounded-2xl border border-sky-500/50 bg-sky-500/5 px-6 py-3 text-xs font-bold tracking-widest text-sky-600 transition-all hover:border-sky-400 hover:bg-sky-500/10 hover:text-sky-700 active:scale-95 cursor-pointer sm:px-8 sm:py-4 sm:text-sm md:px-10 md:py-5"
             >
               START A PROJECT
             </button>
@@ -97,7 +97,7 @@ const Home = () => {
             className="absolute -inset-16 rounded-full border border-sky-500/20 border-dashed" 
           />
           
-          <div className="relative h-72 w-72 overflow-hidden rounded-full border-4 border-sky-500/30 shadow-[0_0_40px_rgba(14,165,233,0.2)] sm:h-96 sm:w-96 lg:h-[480px] lg:w-[480px] z-10 transition-all duration-700 hover:shadow-[0_0_60px_rgba(14,165,233,0.3)]">
+          <div className="relative h-56 w-56 overflow-hidden rounded-full border-4 border-sky-500/30 shadow-[0_0_40px_rgba(14,165,233,0.2)] sm:h-72 sm:w-72 md:h-96 md:w-96 lg:h-[480px] lg:w-[480px] z-10 transition-all duration-700 hover:shadow-[0_0_60px_rgba(14,165,233,0.3)]"></div>
             <img
               src={profilePic}
               alt="Rodelyn"

@@ -39,7 +39,7 @@ const projects = [
 
 const BentoGrid = () => {
   return (
-    <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:grid-rows-3 px-2">
+    <div className="grid grid-cols-1 gap-4 sm:gap-6 md:gap-10 md:grid-cols-3 md:grid-rows-3 px-0 sm:px-2">
       {projects.map((project, index) => (
         <motion.div
           key={index}
@@ -61,12 +61,12 @@ const BentoGrid = () => {
           </div>
 
           {/* Content Layer */}
-          <div className="relative z-10 flex h-full flex-col justify-end p-10">
+          <div className="relative z-10 flex h-full flex-col justify-end p-6 sm:p-8 md:p-10">
             <div className="transform transition-transform duration-500 group-hover:-translate-y-2">
               <span className="mb-4 inline-block text-xs font-black uppercase tracking-[0.4em] text-sky-500 group-hover:text-sky-400 transition-colors">
                 {project.category}
               </span>
-              <h3 className="mb-4 text-3xl font-bold tracking-tight text-white md:text-4xl leading-tight">
+              <h3 className="mb-4 text-xl font-bold tracking-tight text-white sm:text-2xl md:text-3xl lg:text-4xl leading-tight">
                 {project.title}
               </h3>
               <p className="mb-8 max-w-sm text-lg font-light leading-relaxed text-zinc-300 opacity-0 transition-all duration-500 group-hover:opacity-100">

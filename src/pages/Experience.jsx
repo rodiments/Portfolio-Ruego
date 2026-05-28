@@ -77,13 +77,13 @@ const experiencesByYear = {
 
 const Experience = () => {
   return (
-    <div className="mx-auto max-w-5xl px-6 pt-32 sm:px-8 lg:px-12">
-      <div className="mb-24 text-center">
+    <div className="mx-auto max-w-5xl px-4 pt-24 sm:px-6 md:pt-32 lg:px-12">
+      <div className="mb-16 text-center sm:mb-20 md:mb-24">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="mb-6 inline-block border-l-4 border-sky-600 px-6 py-2 text-sm font-bold uppercase tracking-[0.3em] text-sky-500"
+          className="mb-4 inline-block border-l-4 border-sky-600 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-sky-500 sm:px-6 sm:text-sm sm:mb-6"
         >
           Career Timeline
         </motion.div>
@@ -91,7 +91,7 @@ const Experience = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-6xl font-bold tracking-tight text-white sm:text-7xl"
+          className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
         >
           Professional <span className="text-sky-500">Journey.</span>
         </motion.h1>
@@ -99,23 +99,23 @@ const Experience = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="mt-8 text-xl text-zinc-400 font-light max-w-2xl mx-auto leading-relaxed"
+          className="mt-4 text-sm text-zinc-400 font-light max-w-2xl mx-auto leading-relaxed sm:mt-6 sm:text-base md:mt-8 md:text-lg"
         >
           The technical evolution from foundational logic to high-scale digital product architecture.
         </motion.p>
       </div>
 
       {Object.entries(experiencesByYear).map(([year, exps], yearIdx) => (
-        <div key={year} className="mb-32">
+        <div key={year} className="mb-16 sm:mb-20 md:mb-32">
           <motion.h2 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="mb-16 text-center text-2xl font-black uppercase tracking-[0.4em] text-zinc-500"
+            className="mb-8 text-center text-lg font-black uppercase tracking-[0.3em] text-zinc-500 sm:mb-12 sm:text-xl md:mb-16 md:text-2xl"
           >
             {year}
           </motion.h2>
-          <div className="relative space-y-16 before:absolute before:inset-0 before:ml-5 before:h-full before:w-px before:bg-slate-200 md:before:mx-auto md:before:translate-x-0">
+          <div className="relative space-y-8 before:absolute before:inset-0 before:ml-4 before:h-full before:w-px before:bg-slate-200 sm:space-y-10 md:before:mx-auto md:before:translate-x-0 md:space-y-16">
             {exps.map((exp, index) => (
               <motion.div
                 key={index}
@@ -131,20 +131,20 @@ const Experience = () => {
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.3, type: "spring", stiffness: 260, damping: 20 }}
-                  className="absolute left-0 flex h-12 w-12 items-center justify-center rounded-full border border-zinc-800 bg-zinc-950/40 shadow-xl md:left-1/2 md:-ml-6 z-10"
+                  className="absolute left-0 flex h-10 w-10 items-center justify-center rounded-full border border-zinc-800 bg-zinc-950/40 shadow-xl sm:h-12 sm:w-12 md:left-1/2 md:-ml-6 z-10"
                 >
-                  <div className={`h-3 w-3 rounded-full ${exp.type === 'work' ? 'bg-sky-500 shadow-[0_0_15px_rgba(14,165,233,0.6)]' : 'bg-slate-300'}`} />
+                  <div className={`h-2 w-2 rounded-full sm:h-3 sm:w-3 ${exp.type === 'work' ? 'bg-sky-500 shadow-[0_0_15px_rgba(14,165,233,0.6)]' : 'bg-slate-300'}`} />
                 </motion.div>
 
                 {/* Content */}
-                <div className="ml-20 w-full md:ml-0 md:w-[45%]">
-                  <GlassCard className="group hover:border-sky-500/40 transition-all p-10">
+                <div className="ml-16 w-full sm:ml-20 md:ml-0 md:w-[45%]">
+                  <GlassCard className="group hover:border-sky-500/40 transition-all p-6 sm:p-8 md:p-10">
                     <span className="text-xs font-bold uppercase tracking-widest text-sky-500 group-hover:text-sky-400 transition-colors">
                       {exp.period}
                     </span>
-                    <h3 className="mt-3 text-2xl font-bold tracking-tight text-white transition-colors">{exp.title}</h3>
-                    <p className="mt-1 text-lg font-medium text-zinc-400">{exp.company}</p>
-                    <p className="mt-6 text-lg text-zinc-500 leading-relaxed font-light">{exp.description}</p>
+                    <h3 className="mt-3 text-lg font-bold tracking-tight text-white transition-colors sm:text-xl md:text-2xl">{exp.title}</h3>
+                    <p className="mt-1 text-sm font-medium text-zinc-400 sm:text-base md:text-lg">{exp.company}</p>
+                    <p className="mt-4 text-sm text-zinc-500 leading-relaxed font-light sm:mt-5 sm:text-base md:mt-6 md:text-lg">{exp.description}</p>
                   </GlassCard>
                 </div>
               </motion.div>
