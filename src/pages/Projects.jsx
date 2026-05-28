@@ -1,0 +1,541 @@
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import GlassCard from '../components/GlassCard';
+import ImageCarousel from '../components/ImageCarousel';
+import { Star, X, ArrowRight, Tag, Cpu } from 'lucide-react';
+
+// --- IMAGE IMPORTS ---
+import photography1 from '../assets/images/First Year/IT111 Adventures/Rule of thirds.png';
+import photography2 from '../assets/images/First Year/IT111 Adventures/Fill the frame.png';
+import photography3 from '../assets/images/First Year/IT111 Adventures/Leading Lines.png';
+import photography4 from '../assets/images/First Year/IT111 Adventures/Rule of Space.png';
+import photography5 from '../assets/images/First Year/IT111 Adventures/Portrait.jpg';
+import photography6 from '../assets/images/First Year/IT111 Adventures/After edit.png';
+import photography7 from '../assets/images/First Year/IT111 Adventures/Before edit.png';
+import photography8 from '../assets/images/First Year/IT111 Adventures/Rule of evem.png';
+import photography9 from '../assets/images/First Year/IT111 Adventures/Rule of thirdss.png';
+
+import it211_1 from '../assets/images/First Year/IT211 Adventures/Final Project/Homepage.png';
+import it211_2 from '../assets/images/First Year/IT211 Adventures/Final Project/1.png';
+import it211_3 from '../assets/images/First Year/IT211 Adventures/Final Project/2.png';
+import it211_4 from '../assets/images/First Year/IT211 Adventures/Final Project/3.png';
+import it211_5 from '../assets/images/First Year/IT211 Adventures/Final Project/4.png';
+import it211_6 from '../assets/images/First Year/IT211 Adventures/Final Project/5.png';
+
+import periodicTable from '../assets/images/First Year/Web System/Periodic Table.png';
+import flight1 from '../assets/images/First Year/Web System/Booking Flight System/1.png';
+import flight2 from '../assets/images/First Year/Web System/Booking Flight System/2.png';
+import flight3 from '../assets/images/First Year/Web System/Booking Flight System/3.png';
+import flight4 from '../assets/images/First Year/Web System/Booking Flight System/4.png';
+import flight5 from '../assets/images/First Year/Web System/Booking Flight System/450579710_1008812213791458_3873051699732865062_n.png';
+import flight6 from '../assets/images/First Year/Web System/Booking Flight System/5.png';
+import flight7 from '../assets/images/First Year/Web System/Booking Flight System/6.png';
+
+import dell1 from '../assets/images/First Year/Web System/Dell/1.png';
+import dell2 from '../assets/images/First Year/Web System/Dell/2.png';
+import dell3 from '../assets/images/First Year/Web System/Dell/3.png';
+import dell4 from '../assets/images/First Year/Web System/Dell/4.png';
+
+import php1 from '../assets/images/Second Year/IT221 and PHP/1.png';
+import php2 from '../assets/images/Second Year/IT221 and PHP/2.png';
+import php3 from '../assets/images/Second Year/IT221 and PHP/3.png';
+import php4 from '../assets/images/Second Year/IT221 and PHP/4.png';
+import php5 from '../assets/images/Second Year/IT221 and PHP/5.png';
+import php6 from '../assets/images/Second Year/IT221 and PHP/6.png';
+import php7 from '../assets/images/Second Year/IT221 and PHP/7.png';
+
+import it223_1 from '../assets/images/Second Year/IT223/1.png';
+import it223_2 from '../assets/images/Second Year/IT223/2.png';
+import it223_3 from '../assets/images/Second Year/IT223/3.png';
+import it223_4 from '../assets/images/Second Year/IT223/4.png';
+import it223_5 from '../assets/images/Second Year/IT223/5.png';
+
+// --- FOURTH YEAR / CAPSTONE ---
+import solarImage from '../assets/images/Fourth Year/Capstone/iOt.jpeg';
+
+// --- THIRD YEAR ---
+import cipher1 from '../assets/images/Third Year/Cipher Application/26346.jpg';
+import cipher2 from '../assets/images/Third Year/Cipher Application/26347.jpg';
+import cipher3 from '../assets/images/Third Year/Cipher Application/26348.jpg';
+import cipher4 from '../assets/images/Third Year/Cipher Application/26349.jpg';
+import cipher5 from '../assets/images/Third Year/Cipher Application/26350.jpg';
+
+const academicContent = [
+  {
+    id: 'capstone',
+    year: 'Current / Capstone',
+    title: 'SolarTrack: An IoT Based Solar Panel Tracking and Monitoring System',
+    summary: 'The culmination of my engineering journey—where hardware precision meets user-centric dashboard design to solve real-world sustainability challenges.',
+    description: 'A sophisticated dual-axis solar tracking system integrated with an IoT dashboard for real-time performance monitoring and efficiency analysis. This project emphasizes user-centric dashboard design and sustainable energy data visualization.',
+    tags: ['IoT', 'UI/UX', 'Sustainability', 'Sensors'],
+    image: solarImage,
+    isFeatured: true,
+    role: 'Lead UI/UX & Systems Architect',
+    outcome: 'Deployment Phase'
+  },
+  {
+    id: 'year3',
+    year: 'Third Year',
+    summary: 'A year of specialization—shifting focus toward the intersection of complex system security and intuitive interaction design.',
+    projects: [
+      {
+        title: 'Advanced Cipher Application',
+        description: 'A secure encryption/decryption platform implementing multiple cryptographic algorithms. Focused on creating a streamlined UI/UX for complex security operations, ensuring technical power is accessible to users.',
+        tags: ['Cryptography', 'UI/UX', 'Security', 'Java'],
+        isCarousel: true,
+        carouselImages: [cipher1, cipher2, cipher3, cipher4, cipher5],
+        role: 'Full-stack Developer & Designer'
+      }
+    ]
+  },
+  {
+    id: 'year2',
+    year: 'Second Year',
+    summary: 'Strengthening the technical backbone—focusing on robust backend logic, database integrity, and algorithmic efficiency.',
+    projects: [
+      {
+        title: 'IT221 & PHP: Advanced Web Development',
+        description: 'Deep dive into dynamic applications focusing on backend integration and complex user authentication.',
+        tags: ['PHP', 'MySQL', 'Backend'],
+        isCarousel: true,
+        carouselImages: [php1, php2, php3, php4, php5, php6, php7],
+        role: 'Full-stack Developer'
+      },
+      {
+        title: 'IT223: Data Structures & Algorithms',
+        description: 'Implementation of complex algorithmic solutions and efficient data processing patterns.',
+        tags: ['Java', 'Algorithms', 'DSA'],
+        isCarousel: true,
+        carouselImages: [it223_1, it223_2, it223_3, it223_4, it223_5],
+        role: 'Systems Engineer'
+      }
+    ]
+  },
+  {
+    id: 'year1',
+    year: 'First Year',
+    summary: 'Discovering the fundamentals—exploring the synergy between visual composition and structured system design.',
+    projects: [
+      {
+        title: 'IT111: Digital Photography',
+        description: 'Mastery of fundamental photography principles including Rule of Thirds and Leading Lines.',
+        tags: ['Photography', 'Design'],
+        isCarousel: true,
+        carouselImages: [photography1, photography2, photography3, photography4, photography5, photography6, photography7, photography8, photography9],
+        role: 'Visual Designer'
+      },
+      {
+        title: 'IT211: Systems Design',
+        description: 'Comprehensive information technology project demonstrating full-system architecture.',
+        tags: ['UI/UX', 'Architecture'],
+        isCarousel: true,
+        carouselImages: [it211_1, it211_2, it211_3, it211_4, it211_5, it211_6],
+        role: 'UI Designer'
+      },
+      {
+        title: 'Flight Booking Platform',
+        description: 'Full-featured web application for flight reservations with optimized user experience.',
+        tags: ['Web App', 'Frontend'],
+        isCarousel: true,
+        carouselImages: [flight1, flight2, flight3, flight4, flight5, flight6, flight7],
+        role: 'Web Developer'
+      }
+    ]
+  }
+];
+
+const Projects = () => {
+  const [activeYear, setActiveYear] = useState('capstone');
+  const [savedProjects, setSavedProjects] = useState([]);
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  // Scroll Spy Implementation
+  useEffect(() => {
+    const sectionIds = ['capstone', 'year3', 'year2', 'year1'];
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0
+    };
+
+    const handleIntersect = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveYear(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersect, observerOptions);
+    
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('savedProjects');
+    if (saved) setSavedProjects(JSON.parse(saved));
+  }, []);
+
+  const toggleSave = (title) => {
+    setSavedProjects(prev => {
+      const next = prev.includes(title) ? prev.filter(t => t !== title) : [...prev, title];
+      localStorage.setItem('savedProjects', JSON.stringify(next));
+      return next;
+    });
+  };
+
+  const scrollToSection = (id) => {
+    setActiveYear(id);
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  return (
+    <div className="mx-auto max-w-7xl px-6 pt-32 sm:px-8 lg:px-12">
+      {/* Header Section */}
+      <header className="mb-24">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-6 inline-block border-l-4 border-emerald-600 px-6 py-2 text-sm font-bold uppercase tracking-[0.3em] text-emerald-500"
+        >
+          Project Showcase
+        </motion.div>
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="text-5xl md:text-6xl font-bold tracking-tight text-white mb-6"
+        >
+          Design & Development <span className="text-emerald-500">Journey</span>
+        </motion.h1>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-lg md:text-xl text-zinc-400 font-light leading-relaxed max-w-3xl"
+        >
+          Exploring the intersection of thoughtful design and technical execution. Each project represents a learning milestone in my journey as a UI/UX designer and developer.
+        </motion.p>
+      </header>
+
+      {/* Floating Quick Nav */}
+      <nav className="sticky top-24 z-40 mb-20 flex justify-center">
+        <div className="flex items-center gap-2 rounded-2xl border border-zinc-800 bg-zinc-950/90 p-2 backdrop-blur-xl shadow-2xl">
+          {academicContent.map((section) => (
+            <button
+              key={section.id}
+              onClick={() => scrollToSection(section.id)}
+              className={`px-8 py-3 text-xs font-bold uppercase tracking-widest transition-all rounded-xl ${
+                activeYear === section.id 
+                ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20' 
+                : 'text-zinc-500 hover:text-zinc-300'
+              }`}
+            >
+              {section.year.split(' ')[0]}
+            </button>
+          ))}
+        </div>
+      </nav>
+
+      {/* Dynamic Content Sections */}
+      {academicContent.map((section) => (
+        <section key={section.id} id={section.id} className="mb-48 scroll-mt-48">
+          {/* Section Heading */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="mb-16 flex flex-col border-b border-zinc-900 pb-10"
+          >
+            <div className="flex items-end justify-between">
+              <div>
+                <span className="text-xs font-black uppercase tracking-[0.4em] text-emerald-500">{section.year}</span>
+                <h2 className="mt-4 text-4xl font-bold text-white">{section.isFeatured ? 'Primary Milestone' : 'Academic Explorations'}</h2>
+              </div>
+            </div>
+            {section.summary && (
+              <motion.p 
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                className="mt-6 max-w-4xl text-lg text-zinc-400 font-light italic leading-relaxed"
+              >
+                {section.summary}
+              </motion.p>
+            )}
+          </motion.div>
+
+          {section.isFeatured ? (
+            /* Featured Capstone Layout */
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="group relative overflow-hidden rounded-[3rem] bg-zinc-900/50 border border-zinc-800 shadow-2xl"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="relative aspect-square lg:aspect-auto overflow-hidden">
+                  <img src={section.image} alt={section.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/80 to-transparent" />
+                </div>
+                <div className="flex flex-col justify-center p-12 lg:p-20">
+                  <motion.div 
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="mb-8 flex gap-4"
+                  >
+                    <span className="flex items-center gap-2 rounded-full bg-emerald-600/10 px-5 py-2 text-xs font-black uppercase tracking-widest text-emerald-400 border border-emerald-500/20">
+                      <Cpu size={14} /> Systems Engineering
+                    </span>
+                  </motion.div>
+                  <motion.h3 
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="text-5xl font-bold text-white mb-6 leading-tight"
+                  >
+                    {section.title}
+                  </motion.h3>
+                  <motion.p 
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                    className="text-zinc-400 text-lg font-light leading-relaxed mb-10"
+                  >
+                    {section.description}
+                  </motion.p>
+                  
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.6 }}
+                    className="grid grid-cols-2 gap-10 mb-12 border-y border-zinc-800 py-10"
+                  >
+                    <div>
+                      <span className="text-xs font-black uppercase tracking-widest text-zinc-600 block mb-2">Role</span>
+                      <span className="text-white text-lg font-medium">{section.role}</span>
+                    </div>
+                    <div>
+                      <span className="text-xs font-black uppercase tracking-widest text-zinc-600 block mb-2">Status</span>
+                      <span className="text-white text-lg font-medium">{section.outcome}</span>
+                    </div>
+                  </motion.div>
+
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 }}
+                    className="flex flex-wrap gap-3"
+                  >
+                    {section.tags.map(tag => (
+                      <span key={tag} className="px-5 py-2 rounded-xl bg-emerald-600/10 text-emerald-400 text-xs font-bold border border-emerald-500/20 uppercase tracking-widest">
+                        {tag}
+                      </span>
+                    ))}
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          ) : (
+            /* Cinematic Grid for Regular Projects */
+            <motion.div 
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-50px" }}
+              variants={{
+                hidden: { opacity: 0 },
+                show: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.15 }
+                }
+              }}
+              className="grid grid-cols-1 md:grid-cols-2 gap-12"
+            >
+              {section.projects.map((project, idx) => (
+                <motion.div
+                  key={idx}
+                  variants={{
+                    hidden: { opacity: 0, y: 30, scale: 0.98 },
+                    show: { opacity: 1, y: 0, scale: 1 }
+                  }}
+                  transition={{ duration: 0.6 }}
+                  className="group relative flex flex-col rounded-[2.5rem] bg-zinc-900/40 border border-zinc-800 overflow-hidden transition-all hover:border-emerald-600/40 shadow-xl cursor-pointer hover:shadow-[0_20px_60px_rgba(16,185,129,0.1)]"
+                  onClick={() => setSelectedProject({ ...project, section: section })}
+                >
+                  <div className="p-6">
+                    {project.isCarousel ? (
+                      <ImageCarousel images={project.carouselImages} title={project.title} />
+                    ) : (
+                      <div className="aspect-video overflow-hidden rounded-[1.5rem]">
+                        <img src={project.image} alt={project.title} className="h-full w-full object-cover" />
+                      </div>
+                    )}
+                  </div>
+                  
+                  <div className="p-10 pt-4">
+                    <div className="mb-6 flex items-center justify-between">
+                      <span className="text-xs font-black uppercase tracking-widest text-emerald-500">{project.role}</span>
+                      <button 
+                        onClick={() => toggleSave(project.title)}
+                        className={`p-3 rounded-xl transition-colors ${savedProjects.includes(project.title) ? 'text-emerald-500 bg-emerald-500/10' : 'text-zinc-600 hover:text-white hover:bg-zinc-800'}`}
+                      >
+                        <Star size={18} fill={savedProjects.includes(project.title) ? "currentColor" : "none"} />
+                      </button>
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4 leading-tight">{project.title}</h3>
+                    <p className="text-lg text-zinc-400 font-light leading-relaxed mb-8">{project.description}</p>
+                    <div className="flex flex-wrap gap-3 mb-6">
+                      {project.tags.map(tag => (
+                        <span key={tag} className="px-4 py-2 rounded-xl bg-zinc-950 text-zinc-400 text-[10px] font-black uppercase tracking-widest border border-zinc-800 group-hover:border-emerald-600/20 transition-colors">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <motion.div 
+                      initial={{ opacity: 0, x: -10 }}
+                      whileHover={{ opacity: 1, x: 0 }}
+                      className="inline-flex items-center gap-2 text-emerald-500 font-semibold text-sm group-hover:translate-x-1 transition-transform"
+                    >
+                      View Project <ArrowRight size={16} />
+                    </motion.div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
+        </section>
+      ))}
+
+      {/* Project Detail Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedProject(null)}
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-zinc-900 rounded-[2.5rem] border border-zinc-800 max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-[0_20px_100px_rgba(0,0,0,0.8)]"
+            >
+              {/* Modal Header with Close */}
+              <div className="sticky top-0 z-10 flex items-center justify-between p-8 border-b border-zinc-800 bg-zinc-900/95 backdrop-blur">
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.3em] text-emerald-500 mb-2">
+                    {selectedProject.section?.year || 'Project'}
+                  </p>
+                  <h2 className="text-3xl font-bold text-white">{selectedProject.title}</h2>
+                </div>
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="p-3 rounded-xl bg-zinc-800/50 hover:bg-zinc-700 transition-colors"
+                >
+                  <X size={24} className="text-white" />
+                </button>
+              </div>
+
+              {/* Modal Content */}
+              <div className="p-8 md:p-12">
+                {/* Gallery/Images */}
+                <div className="mb-12">
+                  {selectedProject.isCarousel ? (
+                    <div className="rounded-[1.5rem] overflow-hidden border border-zinc-800 shadow-lg">
+                      <ImageCarousel images={selectedProject.carouselImages} title={selectedProject.title} />
+                    </div>
+                  ) : (
+                    <img
+                      src={selectedProject.image}
+                      alt={selectedProject.title}
+                      className="w-full rounded-[1.5rem] object-cover border border-zinc-800"
+                    />
+                  )}
+                </div>
+
+                {/* Project Details */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-[0.3em] text-zinc-600 mb-2">Role</p>
+                    <p className="text-lg font-semibold text-white">{selectedProject.role || 'Designer'}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-[0.3em] text-zinc-600 mb-2">Duration</p>
+                    <p className="text-lg font-semibold text-white">{selectedProject.section?.year || 'Ongoing'}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-[0.3em] text-zinc-600 mb-2">Status</p>
+                    <p className="text-lg font-semibold text-emerald-400">{selectedProject.outcome || 'Completed'}</p>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <div className="mb-12">
+                  <h3 className="text-2xl font-bold text-white mb-4">About This Project</h3>
+                  <p className="text-lg text-zinc-400 font-light leading-relaxed mb-6">
+                    {selectedProject.description}
+                  </p>
+                  {selectedProject.summary && (
+                    <p className="text-base text-zinc-500 font-light italic leading-relaxed border-l-4 border-emerald-500/30 pl-4">
+                      {selectedProject.summary}
+                    </p>
+                  )}
+                </div>
+
+                {/* Technologies/Tags */}
+                <div className="mb-12">
+                  <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                    <Tag size={20} className="text-emerald-500" />
+                    Technologies & Skills
+                  </h3>
+                  <div className="flex flex-wrap gap-3">
+                    {selectedProject.tags.map((tag) => (
+                      <motion.span
+                        key={tag}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="px-5 py-3 rounded-xl bg-emerald-600/10 text-emerald-400 border border-emerald-500/30 font-semibold text-sm uppercase tracking-wide hover:bg-emerald-600/20 transition-colors"
+                      >
+                        {tag}
+                      </motion.span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* CTA */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex gap-4 pt-8 border-t border-zinc-800"
+                >
+                  <button
+                    onClick={() => setSelectedProject(null)}
+                    className="flex-1 rounded-xl bg-emerald-600 text-white font-bold py-4 px-6 transition-all hover:bg-emerald-500 hover:shadow-[0_0_30px_rgba(16,185,129,0.3)] uppercase tracking-wide"
+                  >
+                    Close
+                  </button>
+                </motion.div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+export default Projects;
